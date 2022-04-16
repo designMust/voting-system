@@ -1,0 +1,200 @@
+// CUSTOM FUNCTIONS
+
+function formReset() { //Reset forms
+  document.getElementById("signinForm").reset();
+  document.getElementById("signupForm").reset();
+}
+
+
+function closeModal() { //Close modal automatically
+  document.getElementById("closeModal").click();
+}
+
+$('.closeoverlay').click(function(){ //Reset forms and clear errors messages after closing modals.
+  errorStatusSingIn.style.display="none";
+  errorStatusSingUp.style.display="none";
+  document.getElementById("signinForm").reset();
+  document.getElementById("signupForm").reset();
+});
+
+function signin() { //Sing in
+  
+  var email = signinEmail.value;
+  var password = signinPassword.value;
+
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    
+    const user = userCredential.user;
+    var verification = user.emailVerified;
+    
+    if (verification === false) {
+    
+      console.log("Usuario no verificado");
+      signOut(auth).then(() => {
+        errorTextSingIn.innerText = "Verifica tu correo electrónico para iniciar sesión.";
+        errorStatusSingIn.style.display="block";
+        formReset();
+      });
+      
+    } else {
+      console.log("Usuario verificado");
+      formReset();
+      closeModal();
+    }
+    // ...
+  })
+  .catch((error) => {
+    errorSignIn(error);
+  });
+}
+
+function errorSignIn(error) { //Error messages in Sign In method
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  
+  switch (errorCode) {
+    case "auth/wrong-password":
+      errorTextSingIn.innerText = "Contraseña incorrecta.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+    case "auth/account-exists-with-different-credential":
+      errorTextSingIn.innerText = "Esta cuenta está asociada a otro método de autenticación.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+    case "auth/no-such-provider":
+      errorTextSingIn.innerText = "Esta cuenta está asociada a otro método de autenticación.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+    case "auth/unverified-email":
+      errorTextSingIn.innerText = "Verifica tu correo electrónico para iniciar sesión.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+    case "auth/user-not-found":
+      errorTextSingIn.innerText = "No existe ningún usuario con este correo electrónico.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+    case "auth/user-disabled":
+      errorTextSingIn.innerText = "Esta cuenta se ha deshabilitado por infringir las normas de uso.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+    default:
+      errorTextSingIn.innerText = "Algo está fallando. Si el error persiste ponte en contacto con nosotros.";
+      errorStatusSingIn.style.display="block";
+      formReset();
+      break;
+  }       
+  
+  console.log('Error code: ' + errorCode);
+  console.log('Error message: ' + errorMessage);
+  
+}
+
+function signup() { //Sign up
+  
+  var email = signupEmail.value;
+  var password = signupPassword.value;
+  var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
+  var today = new Date();
+  var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+
+  if (terms.checked === true) {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+
+      const user = userCredential.user;
+
+      set(ref(database, 'users/' + username),{
+          ID: user.uid,
+          userEmail: email,
+          Created: date
+      }).then(function() {
+        signUpVerification();
+      });
+    })
+      .catch(function (error) {
+      errorSignUp(error);
+    });
+  }
+}
+
+function signUpVerification() { //Send a verification Mail after signing up
+
+  var actionCodeSettings = {
+    url: 'https://discovermust-firebase-bdf453be46d614181.webflow.io/challenge/madrid/foodie/listas',
+    handleCodeInApp: false
+  };
+  
+  const auth = getAuth();
+  const user = auth.currentUser;
+  sendEmailVerification(user, actionCodeSettings)
+  .then(() => {
+    signOut(auth)
+    .then(() => {
+      window.location.replace('/verification');
+    })
+  })
+}
+
+function errorSignUp(error) { //Error messages in Sign Up method
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  
+  switch (errorCode) {
+    case "auth/email-already-in-use":
+      errorTextSingUp.innerText = "Este correo electrónico ya está en uso.";
+      errorStatusSingUp.style.display="block";
+      formReset();
+      break;
+    default:
+      errorTextSingUp.innerText = "Algo está fallando. Si el error persiste ponte en contacto con nosotros.";
+      errorStatusSingUp.style.display="block";
+      formReset();
+      break;
+  }       
+  
+  console.log('Error code: ' + errorCode);
+  console.log('Error message: ' + errorMessage);
+  
+}
+
+function userSignedIn() {
+  signInButton.style.display="none"; //Hide SignIn link
+  signOutButton.style.display="block"; //Show SignOut link
+  
+  for (const voteButton of vote) { //Show real vote button
+    voteButton.style.display = "block";
+  }
+  for (const voteFake of fake) { //Hide fake vote button
+    voteFake.style.display = "none";
+  }
+  for (const votingwrapper of votingWrapper) { //Change voting wrapper style
+    votingwrapper.style.borderColor = "#00df89";
+  }
+}
+
+function userSignedOut() {
+  signOutButton.style.display="none"; //Hide SignOut link
+  signInButton.style.display="block"; //Show SignIn link
+  
+  for (const voteButton of vote) { //Show real vote button
+    voteButton.style.display = "none";
+  }
+  for (const voteFake of fake) { //Hide fake vote button
+    voteFake.style.display = "block";
+  }
+  for (const votingwrapper of votingWrapper) { //Change voting wrapper style
+    votingwrapper.style.borderColor = "#ababab";
+  }
+}
+
+function stopLoadingScreen() {
+  loadingScreen.style.display = 'none';
+}
