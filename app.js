@@ -181,7 +181,6 @@ function signup() { //Sign up
   
   var email = signupEmail.value;
   var password = signupPassword.value;
-  var uid = user.uid;
   var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
   var today = new Date();
   var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -191,6 +190,7 @@ function signup() { //Sign up
       .then((userCredential) => {
 
       const user = userCredential.user;
+      const uid = user.uid;
 
       set(ref(database, 'users/' + uid),{
           username: username,
