@@ -69,7 +69,7 @@ $('.clicked-button').click(function(){
   var uid = user.uid;
   var currentList = this.id;
   
-  update(ref(database, 'users/' + username),{
+  update(ref(database, 'users/' + uid),{
     [currentList]: true
   }).then(() => {
     console.log("Voto procesado");
