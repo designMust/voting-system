@@ -1,3 +1,84 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBoXdCejk_RUyPnO3xVcegdzYliimivJAQ",
+  authDomain: "foodie-challenge.firebaseapp.com",
+  databaseURL: "https://foodie-challenge-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "foodie-challenge",
+  storageBucket: "foodie-challenge.appspot.com",
+  messagingSenderId: "549390693296",
+  appId: "1:549390693296:web:e201f0d9997de701821c75",
+  measurementId: "G-MEMCTXWV1R"
+};
+
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);  
+const database = getDatabase(app);
+const auth = getAuth();
+
+// Global const objects
+
+const user = auth.currentUser;
+const vote = document.querySelectorAll('.votebutton.w-embed');
+const voted = document.querySelectorAll('.votedbutton.w-button');
+const fake = document.querySelectorAll('.votefake.w-button');
+const votingWrapper = document.querySelectorAll('.votingwrapper');
+
+//User State Observer
+
+onAuthStateChanged(auth, (user) => {
+  if (user) { // User is signed in
+  	userSignedIn();
+    stopLoadingScreen();
+    console.log('User is logged in!');
+    
+  } else { // User is signed out.
+    userSignedOut();
+    stopLoadingScreen();
+    console.log('No user is logged in');
+  }
+}); 
+
+//Run Sing Up method
+
+signupButton.addEventListener('click', signup);
+
+//Run Sing In method
+
+signinButton.addEventListener('click', signin);
+
+//Run Sing Out method
+
+signOutButton.addEventListener('click',(e)=>{ //Sing Out
+   signOut(auth).then(() => { //Se cerró la sesión
+   
+   }).catch((error) => { // An error happened.
+     const errorCode = error.code;
+     const errorMessage = error.message;
+     console.log(errorMessage);
+   });
+});
+
+// Run voting method (updating user database)
+
+$('.clicked-button').click(function(){
+  const user = auth.currentUser;
+  var email = user.email;
+  var currentList = this.id;
+  var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
+  
+  update(ref(database, 'users/' + username),{
+    [currentList]: true
+  }).then(() => {
+    console.log("Voto procesado");
+    location.reload();
+  })
+});
+
+
 // CUSTOM FUNCTIONS
 
 function formReset() { //Reset forms
