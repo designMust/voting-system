@@ -66,9 +66,8 @@ signOutButton.addEventListener('click',(e)=>{ //Sing Out
 
 $('.clicked-button').click(function(){
   const user = auth.currentUser;
-  var email = user.email;
+  var uid = user.uid;
   var currentList = this.id;
-  var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
   
   update(ref(database, 'users/' + username),{
     [currentList]: true
@@ -182,6 +181,7 @@ function signup() { //Sign up
   
   var email = signupEmail.value;
   var password = signupPassword.value;
+  var uid = user.uid;
   var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
   var today = new Date();
   var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -192,8 +192,8 @@ function signup() { //Sign up
 
       const user = userCredential.user;
 
-      set(ref(database, 'users/' + username),{
-          ID: user.uid,
+      set(ref(database, 'users/' + uid),{
+          username: username,
           userEmail: email,
           Created: date
       }).then(function() {
