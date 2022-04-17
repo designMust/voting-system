@@ -333,6 +333,5 @@ function contarVotos() {
     })
   );
 }
-}
 
 
