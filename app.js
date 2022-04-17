@@ -42,36 +42,18 @@ let span = [
   let countVariable;
   let actual = 0;
 
-//Read votes values from database and show it on the web
-  
-  window.onload = function() {
-  	const dbRef = ref(database);
-    
-    listsID.forEach (listID => 
-      get(child(dbRef, '/lists/' + listID + '/votes')).then((snapshot) =>{
-        countVariable = snapshot.val();
-        console.log("Los votos son " + countVariable);
-        console.log(span[actual])
-        span[actual].textContent = countVariable;
-        actual ++;
-      })
-    );
-    stopLoadingScreen();
-  }
-
-//Set votes value from database
-
-
 
 //User State Observer
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
+    window.onload = leerDatos(); 
   	userSignedIn();
     stopLoadingScreen();
     console.log('User is logged in!');
     
   } else { // User is signed out.
+    window.onload = leerDatos(); 
     userSignedOut();
     stopLoadingScreen();
     console.log('No user is logged in');
@@ -314,4 +296,19 @@ function userSignedOut() {
 
 function stopLoadingScreen() {
   loadingScreen.style.display = 'none';
+}
+
+function leerDatos() { //Read votes values from database and show it on the web
+  const dbRef = ref(database);
+
+  listsID.forEach (listID => 
+    get(child(dbRef, '/lists/' + listID + '/votes')).then((snapshot) =>{
+      countVariable = snapshot.val();
+      console.log("Los votos son " + countVariable);
+      console.log(span[actual])
+      span[actual].textContent = countVariable;
+      actual ++;
+    })
+  );
+  stopLoadingScreen();
 }
