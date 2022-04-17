@@ -47,13 +47,13 @@ let span = [
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
-    userSignedIn();
     readVotes();
+    userSignedIn();
     stopLoadingScreen();
     console.log('User is logged in!');
     
   } else { // User is signed out.
-    leerDatos(); 
+    readVotes(); 
     userSignedOut();
     stopLoadingScreen();
     console.log('No user is logged in');
