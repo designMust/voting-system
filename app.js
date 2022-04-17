@@ -94,8 +94,7 @@ $('.clicked-button').click(
       console.log("Voto procesado");
       location.reload();
     })*/
-     
-    ref(database, 'lists/' + currentList);.transaction(function(currentVotes) {
+    ref(database, 'lists/' + currentList).transaction(function(currentVotes) {
       return (currentVotes || 0) + 1;
     })
     
