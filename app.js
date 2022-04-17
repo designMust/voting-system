@@ -88,7 +88,7 @@ $('.clicked-button').click(
     var uid = user.uid;
     var currentList = this.id;
     
-    const db = getDatabase();
+    /*const db = getDatabase();
 
     var userVotes = {
       [currentList]: true
@@ -97,22 +97,30 @@ $('.clicked-button').click(
     const voteByUser = {
       [uid]: true
     }
-    
-    const newPostKey = push(child(ref(db), 'posts')).key;
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     const updates = {};
-    updates['/users/' + uid + newPostKey] = userVotes;
-    updates['/lists/' + currentList + uid + newPostKey] = voteByUser;
+    updates['/users/' + uid + currentList] = userVotes;
+    updates['/lists/' + currentList + uid ] = voteByUser;
 
-    return update(ref(db), updates);
-
+    return update(ref(db), updates);*/
+    
+    update(ref(database, 'users/' + uid),{
+      [currentList]: true
+    }).then(() => {
+      update(ref(database, 'lists/' + currentList),{
+      [uid]: true
+      });
+      console.log("Voto procesado");
+      location.reload();
+    })
+    
     /*update(ref(database, 'users/' + uid),{
       [currentList]: true
     }).then(() => {
       console.log("Voto procesado");
       location.reload();
-    })*/  
+    })*/
   }
 );
 
