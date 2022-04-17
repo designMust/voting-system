@@ -82,18 +82,20 @@ signOutButton.addEventListener('click',(e)=>{ //Sing Out
 
 // Run voting method (updating user database)
 
-$('.clicked-button').click(function(){
-  const user = auth.currentUser;
-  var uid = user.uid;
-  var currentList = this.id;
-  
-  update(ref(database, 'users/' + uid),{
-    [currentList]: true
-  }).then(() => {
-    console.log("Voto procesado");
-    location.reload();
-  })
-});
+$('.clicked-button').click(
+  function(){
+    const user = auth.currentUser;
+    var uid = user.uid;
+    var currentList = this.id;
+    /*update(ref(database, 'users/' + uid),{
+      [currentList]: true
+    }).then(() => {
+      console.log("Voto procesado");
+      location.reload();
+    })*/
+    addVote();
+  }
+);
 
 
 // CUSTOM FUNCTIONS
@@ -319,6 +321,13 @@ function readVotes() { //Read votes values from database and show it on the web
     actual++;
     })
   );
+}
+
+function addVote(uid, currentList) {
+  const updates = {};
+  updates['user/' + uid + currentList] = true;
+  updates['lists/' + currentList + '/votes'] = firebase.database.ServerValue.increment(1);
+  firebase.database().ref().update(updates);
 }
 
 
