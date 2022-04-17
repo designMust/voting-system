@@ -42,18 +42,18 @@ let span = [
   let countVariable;
   let actual = 0;
 
+window.onload = contarVotos();
+
 
 //User State Observer
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
-    readVotes();
     userSignedIn();
     stopLoadingScreen();
     console.log('User is logged in!');
     
   } else { // User is signed out.
-    readVotes(); 
     userSignedOut();
     stopLoadingScreen();
     console.log('No user is logged in');
@@ -299,7 +299,8 @@ function stopLoadingScreen() {
   loadingScreen.style.display = 'none';
 }
 
-function readVotes() { //Read votes values from database and show it on the web
+/*function readVotes() { //Read votes values from database and show it on the web
+  
   /*const dbRef = ref(database);
 
   listsID.forEach (listID => 
@@ -312,7 +313,7 @@ function readVotes() { //Read votes values from database and show it on the web
     })
   );*/
   
-  listsID.forEach (listID =>
+  /*listsID.forEach (listID =>
     onValue(ref(database, 'lists/' + listID + '/votes'), (snapshot) => {
     countVariable = snapshot.val();
     console.log(countVariable);
@@ -320,6 +321,18 @@ function readVotes() { //Read votes values from database and show it on the web
     actual++;
     })
   );
+}*/
+
+function contarVotos() {
+  listsID.forEach (listID =>
+    onValue(ref(database, 'lists/' + listID), (snapshot) => {
+    countVariable = snapshot.val();
+    console.log(countVariable);
+    //span[actual].textContent = countVariable;
+    //actual++;
+    })
+  );
+}
 }
 
 
