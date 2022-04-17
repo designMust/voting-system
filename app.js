@@ -96,7 +96,7 @@ $('.clicked-button').click(
     
     const updates = {};
     updates['user/' + uid + currentList] = true;
-    updates['lists/' + currentList + '/votes'] = ;
+    updates['lists/' + currentList + '/votes'] = 1000;
     update(ref(database, updates));
     
     /*const updates = {};
