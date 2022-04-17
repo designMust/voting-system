@@ -310,12 +310,14 @@ function readVotes() { //Read votes values from database and show it on the web
       actual ++;
     })
   );*/
-  
   const votesRef = ref(database, 'lists/' + listID + '/votes');
-  onValue(votesRef, (snapshot) => {
+  
+  listsID.forEach (listID =>
+    onValue(votesRef, (snapshot) => {
     countVariable = snapshot.val();
     console.log(countVariable);
-  });
+    });
+  );
 }
 
 
