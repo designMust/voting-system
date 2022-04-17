@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, set, ref, update, get, child } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getDatabase, set, ref, update, get, child, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const firebaseConfig = {
@@ -299,7 +299,7 @@ function stopLoadingScreen() {
 }
 
 function readVotes() { //Read votes values from database and show it on the web
-  const dbRef = ref(database);
+  /*const dbRef = ref(database);
 
   listsID.forEach (listID => 
     get(child(dbRef, '/lists/' + listID + '/votes')).then((snapshot) =>{
@@ -309,5 +309,13 @@ function readVotes() { //Read votes values from database and show it on the web
       span[actual].textContent = countVariable;
       actual ++;
     })
-  );
+  );*/
+  
+  const votesRef = ref(database, 'lists/' + listID + '/votes');
+  onValue(votesRef, (snapshot) => {
+    countVariable = snapshot.val();
+    console.log(countVariable);
+  });
 }
+
+
