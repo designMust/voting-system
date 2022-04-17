@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, set, ref, update, get, child, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getDatabase, set, ref, update, get, child, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const firebaseConfig = {
@@ -88,6 +88,7 @@ $('.clicked-button').click(
     const user = auth.currentUser;
     var uid = user.uid;
     var currentList = this.id;
+    
     /*update(ref(database, 'users/' + uid),{
       [currentList]: true
     }).then(() => {
@@ -95,15 +96,17 @@ $('.clicked-button').click(
       location.reload();
     })*/
     
-    const updates = {};
-    updates[`user/${uid}/${currentList}`] = true;
-    updates[`lists/${currentList}/votes`] = firebase.database.ServerValue.increment(1);
-    firebase.database().ref().update(updates);
+    var ref = firebase.database().ref('lists/' + currentList);
+    ref.transaction(function(currentVotes) {
+      // If node/clicks has never been set, currentRank will be `null`.
+      return (currentVotes || 0) + 1;
+    });
     
     /*const updates = {};
     updates['user/' + uid + currentList] = true;
-    updates['lists/' + currentList + '/votes'] = {votes: database.ServerValue.increment(1)};
+    updates['lists/' + currentList + '/votes'] = database.ServerValue.increment(1);
     update(ref(database, updates));*/
+    
   }
 );
 
