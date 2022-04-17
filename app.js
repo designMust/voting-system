@@ -316,7 +316,7 @@ function readVotes() { //Read votes values from database and show it on the web
     onValue(votesRef, (snapshot) => {
     countVariable = snapshot.val();
     console.log(countVariable);
-    });
+    })
   );
 }
 
