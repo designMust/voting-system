@@ -87,6 +87,7 @@ $('.clicked-button').click(
     const user = auth.currentUser;
     var uid = user.uid;
     var currentList = this.id;
+    const firebase = firebase.database(app);
     /*update(ref(database, 'users/' + uid),{
       [currentList]: true
     }).then(() => {
@@ -95,9 +96,9 @@ $('.clicked-button').click(
     })*/
     
     const updates = {};
-    updates['user/' + uid + currentList] = true;
-    updates['lists/' + currentList + '/votes'] = 1000;
-    update(ref(database, updates));
+    updates[`user/${uid}/${currentList}`] = true;
+    updates[`lists/${currentList}/votes`] = firebase.database.ServerValue.increment(1);
+    firebase.database().ref().update(updates);
     
     /*const updates = {};
     updates['user/' + uid + currentList] = true;
