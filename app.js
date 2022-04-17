@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getDatabase, set, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const firebaseConfig = {
@@ -19,13 +19,49 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-// Global const objects
+// Global const, var, let objects
 
 const user = auth.currentUser;
 const vote = document.querySelectorAll('.votebutton.w-embed');
 const voted = document.querySelectorAll('.votedbutton.w-button');
 const fake = document.querySelectorAll('.votefake.w-button');
 const votingWrapper = document.querySelectorAll('.votingwrapper');
+
+const listsID = [
+  	"list1", 
+  	"list2", 
+  	"list3"
+  ];
+  
+let span = [
+  	contadorlist1,
+    contadorlist2,
+    contadorlist3
+  ];
+  
+  let countVariable;
+  let actual = 0;
+
+//Read votes values from database and show it on the web
+  
+  window.onload = function() {
+  	const dbRef = ref(database);
+    
+    listsID.forEach (listID => 
+      get(child(dbRef, '/lists/' + listID + '/votes')).then((snapshot) =>{
+        countVariable = snapshot.val();
+        console.log("Los votos son " + countVariable);
+        console.log(span[actual])
+        span[actual].textContent = countVariable;
+        actual ++;
+      })
+    );
+    stopLoadingScreen();
+  }
+
+//Set votes value from database
+
+
 
 //User State Observer
 
