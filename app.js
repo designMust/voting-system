@@ -90,14 +90,20 @@ $('.clicked-button').click(
     
     const db = getDatabase();
 
-    var userVotes = [currentList]: true;
+    var userVotes = {
+      [currentList]: true
+    }
     
-    const voteByUser = [uid]: true;
+    const voteByUser = {
+      [uid]: true
+    }
+    
+    const newPostKey = push(child(ref(db), 'posts')).key;
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     const updates = {};
-    updates['/users/' + uid + currentList] = userVotes;
-    updates['/lists/' + currentList + uid] = voteByUser;
+    updates['/users/' + uid + newPostKey] = userVotes;
+    updates['/lists/' + currentList + uid + newPostKey] = voteByUser;
 
     return update(ref(db), updates);
 
