@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { initializeApp, firebase } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, set, ref, update, get, child, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
@@ -93,7 +93,10 @@ $('.clicked-button').click(
       console.log("Voto procesado");
       location.reload();
     })*/
-    addVote();
+    const updates = {};
+    updates['user/' + uid + currentList] = true;
+    updates['lists/' + currentList + '/votes'] = firebase.database.ServerValue.increment(1);
+    firebase.database().ref().update(updates);
   }
 );
 
@@ -321,13 +324,6 @@ function readVotes() { //Read votes values from database and show it on the web
     actual++;
     })
   );
-}
-
-function addVote(uid, currentList) {
-  const updates = {};
-  updates['user/' + uid + currentList] = true;
-  updates['lists/' + currentList + '/votes'] = firebase.database.ServerValue.increment(1);
-  firebase.database().ref().update(updates);
 }
 
 
