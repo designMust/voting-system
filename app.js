@@ -94,10 +94,7 @@ $('.clicked-button').click(
       location.reload();
     })*/
     
-    firebase.database()
-    .ref('lists')
-    .child(currentList)
-    .set(firebase.database.ServerValue.increment(1))
+    database().ref('lists').child(currentList).set(firebase.database.ServerValue.increment(1))
     
     /*const updates = {};
     updates['user/' + uid + currentList] = true;
