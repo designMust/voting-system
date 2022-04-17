@@ -294,7 +294,8 @@ function userSignedOut() {
   }
 }
 
-function stopLoadingScreen() {
+async function stopLoadingScreen() {
+  await readVotes();
   loadingScreen.style.display = 'none';
 }
 
