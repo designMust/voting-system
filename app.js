@@ -47,13 +47,13 @@ let span = [
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
-    readVotes(); 
-  	userSignedIn();
+    userSignedIn();
+    readVotes();
     stopLoadingScreen();
     console.log('User is logged in!');
     
   } else { // User is signed out.
-    window.onload = leerDatos(); 
+    leerDatos(); 
     userSignedOut();
     stopLoadingScreen();
     console.log('No user is logged in');
@@ -294,8 +294,7 @@ function userSignedOut() {
   }
 }
 
-async function stopLoadingScreen() {
-  await readVotes();
+function stopLoadingScreen() {
   loadingScreen.style.display = 'none';
 }
 
