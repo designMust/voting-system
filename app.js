@@ -95,7 +95,7 @@ $('.clicked-button').click(
     })*/
     const updates = {};
     updates['user/' + uid + currentList] = true;
-    updates['lists/' + currentList + '/votes'] = database.ServerValue.increment(1);
+    updates['lists/' + currentList + '/votes'] = {votes: database.ServerValue.increment(1)};
     update(ref(database, updates));
   }
 );
