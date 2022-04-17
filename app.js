@@ -87,6 +87,7 @@ $('.clicked-button').click(
     const user = auth.currentUser;
     var uid = user.uid;
     var currentList = this.id;
+    const app = initializeApp(firebaseConfig); 
     const firebase = firebase.database(app);
     /*update(ref(database, 'users/' + uid),{
       [currentList]: true
