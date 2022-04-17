@@ -87,6 +87,8 @@ $('.clicked-button').click(
     const user = auth.currentUser;
     var uid = user.uid;
     var currentList = this.id;
+    
+    const database = getDatabase();
 
     const userVotes = {
       [currentList]: true
