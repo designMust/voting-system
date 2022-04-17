@@ -93,10 +93,18 @@ $('.clicked-button').click(
       console.log("Voto procesado");
       location.reload();
     })*/
-    const updates = {};
+    
+    update(ref(database, 'lists/' + currentList),{
+      votos: database.ServerValue.increment(1)
+    }).then(() => {
+      console.log("Voto procesado");
+      location.reload();
+    })
+    
+    /*const updates = {};
     updates['user/' + uid + currentList] = true;
     updates['lists/' + currentList + '/votes'] = {votes: database.ServerValue.increment(1)};
-    update(ref(database, updates));
+    update(ref(database, updates));*/
   }
 );
 
