@@ -47,7 +47,7 @@ let span = [
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
-    window.onload = leerDatos(); 
+    readVotes(); 
   	userSignedIn();
     stopLoadingScreen();
     console.log('User is logged in!');
@@ -298,7 +298,7 @@ function stopLoadingScreen() {
   loadingScreen.style.display = 'none';
 }
 
-function leerDatos() { //Read votes values from database and show it on the web
+function readVotes() { //Read votes values from database and show it on the web
   const dbRef = ref(database);
 
   listsID.forEach (listID => 
@@ -310,5 +310,4 @@ function leerDatos() { //Read votes values from database and show it on the web
       actual ++;
     })
   );
-  stopLoadingScreen();
 }
