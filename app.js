@@ -88,7 +88,7 @@ $('.clicked-button').click(
     var uid = user.uid;
     var currentList = this.id;
     
-    const database = getDatabase();
+    const db = getDatabase();
 
     const userVotes = {
       [currentList]: true
@@ -103,7 +103,7 @@ $('.clicked-button').click(
     updates['/users/' + uid] = userVotes;
     updates['/lists/' + currentList] = voteByUser;
 
-    return update(ref(databse), updates);
+    return update(ref(db), updates);
 
     /*update(ref(database, 'users/' + uid),{
       [currentList]: true
