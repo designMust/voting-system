@@ -94,12 +94,10 @@ $('.clicked-button').click(
       location.reload();
     })*/
     
-    update(ref(database, 'lists/' + currentList),{
-      votos: database.ServerValue.increment(1)
-    }).then(() => {
-      console.log("Voto procesado");
-      location.reload();
-    })
+    firebase.database()
+    .ref('lists')
+    .child(currentList)
+    .set(firebase.database.ServerValue.increment(1))
     
     /*const updates = {};
     updates['user/' + uid + currentList] = true;
