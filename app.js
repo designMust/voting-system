@@ -18,7 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);  
 const database = getDatabase(app);
 const auth = getAuth();
-const firebase = firebase.database(app);
 
 // Global const, var, let objects
 
@@ -100,7 +99,7 @@ $('.clicked-button').click(
     ref.transaction(function(currentVotes) {
       // If node/clicks has never been set, currentRank will be `null`.
       return (currentVotes || 0) + 1;
-    });
+    })
     
     /*const updates = {};
     updates['user/' + uid + currentList] = true;
