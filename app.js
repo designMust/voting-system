@@ -94,8 +94,7 @@ $('.clicked-button').click(
       console.log("Voto procesado");
       location.reload();
     })*/
-    
-    var ref = firebase.database().ref('lists/' + currentList);
+    var ref = ref(database, 'lists/' + currentList);
     ref.transaction(function(currentVotes) {
       // If node/clicks has never been set, currentRank will be `null`.
       return (currentVotes || 0) + 1;
