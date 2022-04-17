@@ -87,12 +87,28 @@ $('.clicked-button').click(
     const user = auth.currentUser;
     var uid = user.uid;
     var currentList = this.id;
-    update(ref(database, 'users/' + uid),{
+
+    const userVotes = {
+      [currentList]: true
+    };
+    
+    const voteByUser = {
+      [uid]: true
+    };
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    const updates = {};
+    updates['/users/' + uid] = userVotes;
+    updates['/lists/' + currentList] = voteByUser;
+
+    return update(ref(databse), updates);
+
+    /*update(ref(database, 'users/' + uid),{
       [currentList]: true
     }).then(() => {
       console.log("Voto procesado");
       location.reload();
-    })  
+    })*/  
   }
 );
 
