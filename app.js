@@ -94,9 +94,8 @@ $('.clicked-button').click(
       console.log("Voto procesado");
       location.reload();
     })*/
-    var ref = ref(database, 'lists/' + currentList);
-    ref.transaction(function(currentVotes) {
-      // If node/clicks has never been set, currentRank will be `null`.
+     
+    ref(database, 'lists/' + currentList);.transaction(function(currentVotes) {
       return (currentVotes || 0) + 1;
     })
     
