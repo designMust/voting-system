@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, set, ref, update, get, child, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import firebase from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoXdCejk_RUyPnO3xVcegdzYliimivJAQ",
@@ -94,15 +95,11 @@ $('.clicked-button').click(
       console.log("Voto procesado");
       location.reload();
     })*/
-    ref(database, 'lists/' + currentList).transaction(function(currentVotes) {
-      return (currentVotes || 0) + 1;
-    })
     
-    /*const updates = {};
-    updates['user/' + uid + currentList] = true;
-    updates['lists/' + currentList + '/votes'] = database.ServerValue.increment(1);
-    update(ref(database, updates));*/
-    
+    const updates = {};
+    updates[`users/${uid}/${currentList}`] = true;
+    updates[`lists/${currentList}/votes`] = firebase.database.ServerValue.increment(1);
+    firebase.database().ref().update(updates);    
   }
 );
 
