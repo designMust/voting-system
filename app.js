@@ -364,9 +364,9 @@ function readVotes() {
 }
 
 function writeVotes(){
-  console.log(votesCount); 
-  var currentVotes = Array.prototype.push.apply(votesCount, currentVotes);
-  console.log(currentVotes);
+  console.log("Esto es el array votesCount" + votesCount); 
+  var currentVotes = votesCount;
+  console.log("Esto es el array currentVotes" + currentVotes);
 
   /*for (var i = 0; i < 3; i++) {
     counters[i].textContent = currentVotes.at(i);
