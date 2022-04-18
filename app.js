@@ -29,16 +29,16 @@ const votingWrapper = document.querySelectorAll('.votingwrapper');
 
 const listsID = [
   {
-    id: "list1",
-    counter: "contadorlist1"
+    id: list1,
+    counter: contadorlist1
   },
   {
-    id: "list2",
-    counter: "contadorlist2"
+    id: list2,
+    counter: contadorlist2
   },
   {
-    id: "list3",
-    counter: "contadorlist3"
+    id: list3,
+    counter: contadorlist3
   }
 ];
 
