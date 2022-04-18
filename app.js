@@ -364,7 +364,8 @@ function readVotes() {
 }
 
 function writeVotes(){
-  for (var i = 0; i < votesCount.length; i++) {
+var condition = votesCount.length;
+  for (var i = 0; i < condition; i++) {
     let count = votesCount[i];
     counters[i].textContent = count;
   }
