@@ -33,10 +33,10 @@ const listsID = [
   "list3"
 ];
   
-var span = [
-  contadorlist1,
-  contadorlist2,
-  contadorlist3
+var counters = [
+  "contadorlist1",
+  "contadorlist2",
+  "contadorlist3"
 ];
 
 var votesCount = [];
@@ -360,12 +360,14 @@ function readVotes() {
     })
   );
   console.log(votesCount);
+  writeVotes();
 }
 
-/*function imprimirVotos(){
-  votesCount.forEach (count =>
-                     
-  );
-}*/
+function writeVotes(){
+  for (var i = 0; i < votesCount.length; i++) {
+    let count = votesCount[i];
+    counters[i].textContent = count;
+  }
+}
 
 
