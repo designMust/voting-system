@@ -44,9 +44,6 @@ let votesCount = [];
 //Contabilizar votos y guardarlos en la array votesCount[]
 
 readVotes();
-console.log(votesCount);
-counters[0].textContent = votesCount.at(0);
-
 
 //User State Observer
 
@@ -354,24 +351,29 @@ function stopLoadingScreen() {
 }*/
 
 function readVotes() {
+  
   listsID.forEach (listID =>
     onValue(ref(database, 'lists/' + listID), (snapshot) => {
       let listObject = snapshot.val();
       let count = String(Object.keys(listObject).length);
       votesCount.push(count);
     })
+      .then(function() {
+        writeVotes();
+      });
+    }).catch(function (error) {
+      
+    })
   );
-  //console.log(votesCount);
-  //writeVotes();
 }
 
-/*function writeVotes(){
+function writeVotes(){
   for (var i = 0; i < 3; i++) {
     counters[i].textContent = votesCount.at(i);
     //counters[i].innerText = votesCount[i];
     //console.log(votesCount.at(i));
     //console.log(counters.at(i));
   }
-}*/
+}
 
 
