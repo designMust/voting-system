@@ -39,7 +39,7 @@ var counters = [
   contadorlist3
 ];
 
-let votesCount = [];
+//let votesCount = [];
 
 //Contabilizar votos y guardarlos en la array votesCount[]
 
