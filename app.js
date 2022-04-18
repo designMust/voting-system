@@ -45,6 +45,7 @@ let votesCount = [];
 
 readVotes();
 console.log(votesCount);
+counters[0].textContent = votesCount.at(0);
 
 
 //User State Observer
@@ -366,7 +367,7 @@ function readVotes() {
 
 /*function writeVotes(){
   for (var i = 0; i < 3; i++) {
-    //counters[i].textContent = votesCount[i];
+    counters[i].textContent = votesCount.at(i);
     //counters[i].innerText = votesCount[i];
     //console.log(votesCount.at(i));
     //console.log(counters.at(i));
