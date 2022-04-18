@@ -38,14 +38,12 @@ var span = [
   contadorlist2,
   contadorlist3
 ];
-  
-var countVariable;
-var actual = 0;
+
 var votesCount = [];
 
 //Contabilizar votos y guardarlos en la array votesCount[]
 
-contarVotos();
+readVotes();
 
 
 //User State Observer
@@ -353,26 +351,21 @@ function stopLoadingScreen() {
   );
 }*/
 
-function contarVotos() {
-  
+function readVotes() {
   listsID.forEach (listID =>
     onValue(ref(database, 'lists/' + listID), (snapshot) => {
-    countVariable = snapshot.val();
-    //console.log(countVariable);
-    //console.log(Object.keys(countVariable).length);
-    votesCount.push(countVariable);
-    //span[actual].textContent = Object.keys(countVariable).length;
-    //actual++;
+      let listObject = snapshot.val();
+      let count = Object.keys(listObject).length);
+      votesCount.push(count);
     })
   );
   console.log(votesCount);
-  //imprimirVotos();
 }
 
 /*function imprimirVotos(){
-  for () {
-  
-  }
+  votesCount.forEach (count =>
+                     
+  );
 }*/
 
 
