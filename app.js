@@ -355,7 +355,7 @@ function readVotes() {
   listsID.forEach (listID =>
     onValue(ref(database, 'lists/' + listID), (snapshot) => {
       let listObject = snapshot.val();
-      let count = Object.keys(listObject).length);
+      let count = Object.keys(listObject).length;
       votesCount.push(count);
     })
   );
