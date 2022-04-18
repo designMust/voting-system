@@ -112,7 +112,6 @@ $('.clicked-button').click(
       [uid]: true
       });
       console.log("Voto procesado");
-      location.reload();
     })
     
     /*update(ref(database, 'users/' + uid),{
