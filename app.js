@@ -361,7 +361,8 @@ function readVotes() {
         writeVotes();
       }).catch(function (error) {
       
-    });
+    })
+  );
 }
 
 function writeVotes(){
