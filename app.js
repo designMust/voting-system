@@ -46,6 +46,7 @@ var votesCount = [];
 window.onload = function() {
   readVotes();
   console.log(votesCount);  
+  writeVotes();
 }
 
 //User State Observer
@@ -362,7 +363,6 @@ function readVotes() {
       votesCount.push(count);
     })
   );               
-  writeVotes();  
 }
 
 function writeVotes(){
