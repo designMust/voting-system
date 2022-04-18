@@ -357,7 +357,8 @@ function readVotes() {
       let listObject = snapshot.val();
       let count = String(Object.keys(listObject).length);
       votesCount.push(count);
-  });
+    })
+  );
   //console.log(votesCount);                 
   writeVotes();  
 }
