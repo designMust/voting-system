@@ -57,6 +57,8 @@ var counters = [
 var votesCount = new Array();*/
 
 //Contabilizar votos y guardarlos en la array votesCount[]
+
+readAndWriteVotes();
 //readVotes();
 //console.log(votesCount);
 //console.log(listsID);
