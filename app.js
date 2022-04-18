@@ -44,6 +44,7 @@ var votesCount = new Array();
 //Contabilizar votos y guardarlos en la array votesCount[]
 readVotes();
 console.log(votesCount);
+console.log(listsID);
 
 //User State Observer
 
