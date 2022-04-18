@@ -355,7 +355,7 @@ function contarVotos() {
     onValue(ref(database, 'lists/' + listID), (snapshot) => {
     countVariable = snapshot.val();
     console.log(countVariable);
-    console.log(countVariable.length);
+    console.log(Object.keys(countVariable).length);
     //span[actual].textContent = countVariable;
     //actual++;
     })
