@@ -28,6 +28,21 @@ const fake = document.querySelectorAll('.votefake.w-button');
 const votingWrapper = document.querySelectorAll('.votingwrapper');
 
 const listsID = [
+  {
+    id: "list1",
+    counter: "contadorlist1"
+  },
+  {
+    id: "list2",
+    counter: "contadorlist2"
+  },
+  {
+    id: "list3",
+    counter: "contadorlist3"
+  }
+]
+
+/*const listsID = [
   "list1", 
   "list2", 
   "list3"
@@ -39,12 +54,12 @@ var counters = [
   contadorlist3
 ];
 
-var votesCount = new Array();
+var votesCount = new Array();*/
 
 //Contabilizar votos y guardarlos en la array votesCount[]
-readVotes();
-console.log(votesCount);
-console.log(listsID);
+//readVotes();
+//console.log(votesCount);
+//console.log(listsID);
 
 //User State Observer
 
@@ -327,6 +342,17 @@ function stopLoadingScreen() {
   loadingScreen.style.display = 'none';
 }
 
+function readAndWriteVotes() {
+  listsID.forEach((listID, index, array) => {
+    onValue(ref(database, 'lists/' + listID.id), (snapshot) => {
+      let listObject = snapshot.val();
+      let count = String(Object.keys(listObject).length);
+      let currentCounter = listID.counter;
+      currentCounter.innerText = count;
+    })
+  });
+}
+
 /*function readVotes() { //Read votes values from database and show it on the web
   
   /*const dbRef = ref(database);
@@ -351,7 +377,7 @@ function stopLoadingScreen() {
   );
 }*/
 
-function readVotes() {
+/*function readVotes() {
   
   listsID.forEach (listID =>
     onValue(ref(database, 'lists/' + listID), (snapshot) => {
@@ -361,7 +387,7 @@ function readVotes() {
       votesCount.push(listObject);
     })
   );
-}
+}*/
 
 /*function writeVotes(){
 
