@@ -365,7 +365,7 @@ function readVotes() {
 
 function writeVotes(){
   for (var i = 0; i < 3; i++) {
-    counters[i].textContent = votesCount[i];
+    counters[i].textContent = String(votesCount[i]);
     console.log(counters[i]);
   }
 }
