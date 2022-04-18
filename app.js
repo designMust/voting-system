@@ -28,19 +28,20 @@ const fake = document.querySelectorAll('.votefake.w-button');
 const votingWrapper = document.querySelectorAll('.votingwrapper');
 
 const listsID = [
-  	"list1", 
-  	"list2", 
-  	"list3"
-  ];
+  "list1", 
+  "list2", 
+  "list3"
+];
   
-let span = [
-  	contadorlist1,
-    contadorlist2,
-    contadorlist3
-  ];
+var span = [
+  contadorlist1,
+  contadorlist2,
+  contadorlist3
+];
   
-let countVariable;
-let actual = 0;
+var countVariable;
+var actual = 0;
+var votesCount = [];
 
 window.onload = contarVotos();
 
@@ -349,8 +350,6 @@ function stopLoadingScreen() {
     })
   );
 }*/
-
-let votesCount = [];
 
 function contarVotos() {
   
