@@ -350,7 +350,7 @@ function readAndWriteVotes() {
       //let listObject = snapshot.val();
       //let count = String(Object.keys(listObject).length);
       //let currentCounter = listID.counter;
-      $("#" + listID.counter).text(String(Object.keys(snapshot.val()).length););
+      $("#" + listID.counter).text(String(Object.keys(snapshot.val()).length));
     })
   });
 }
