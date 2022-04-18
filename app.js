@@ -363,10 +363,10 @@ function readVotes() {
   console.log(votesCount);
 }
 
-function writeVotes(){
+function writeVotes(votesCount, counters){
   for (var i = 0; i < 3; i++) {
     //counters[i].textContent = votesCount[i];
-    counters[i].innerText = votesCount[i];
+    //counters[i].innerText = votesCount[i];
     console.log(votesCount[i]);
     console.log(counters[i]);
   }
