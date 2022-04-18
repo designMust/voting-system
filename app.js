@@ -43,7 +43,7 @@ let votesCount = [];
 
 //Contabilizar votos y guardarlos en la array votesCount[]
 
-readVotes();
+window.onload = readVotes();
 
 //User State Observer
 
@@ -357,21 +357,23 @@ function readVotes() {
       let listObject = snapshot.val();
       let count = String(Object.keys(listObject).length);
       votesCount.push(count);
-    }).then(function() {
-        writeVotes();
-      }).catch(function (error) {
-      
-    })
-  );
+  });
+  //console.log(votesCount);                 
+  writeVotes();  
 }
 
 function writeVotes(){
-  for (var i = 0; i < 3; i++) {
-    counters[i].textContent = votesCount.at(i);
+  console.log(votesCount); 
+  var currentVotes = Array.prototype.push.apply(votesCount, currentVotes);
+  console.log(currentVotes);
+
+  /*for (var i = 0; i < 3; i++) {
+    counters[i].textContent = currentVotes.at(i);
     //counters[i].innerText = votesCount[i];
     //console.log(votesCount.at(i));
     //console.log(counters.at(i));
-  }
+  }*/
+  
 }
 
 
