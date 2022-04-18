@@ -44,6 +44,7 @@ let votesCount = [];
 //Contabilizar votos y guardarlos en la array votesCount[]
 
 readVotes();
+console.log(votesCount);
 
 
 //User State Observer
@@ -359,17 +360,17 @@ function readVotes() {
       votesCount.push(count);
     })
   );
-  console.log(votesCount);
-  writeVotes();
+  //console.log(votesCount);
+  //writeVotes();
 }
 
-function writeVotes(){
+/*function writeVotes(){
   for (var i = 0; i < 3; i++) {
     //counters[i].textContent = votesCount[i];
     //counters[i].innerText = votesCount[i];
-    console.log(votesCount.at(i));
-    console.log(counters[i]);
+    //console.log(votesCount.at(i));
+    //console.log(counters.at(i));
   }
-}
+}*/
 
 
