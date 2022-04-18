@@ -40,7 +40,7 @@ const listsID = [
     id: "list3",
     counter: "contadorlist3"
   }
-]
+];
 
 /*const listsID = [
   "list1", 
@@ -350,7 +350,7 @@ function readAndWriteVotes() {
       let listObject = snapshot.val();
       let count = String(Object.keys(listObject).length);
       let currentCounter = listID.counter;
-      currentCounter.innerText = count;
+      currentCounter.textContent = count;
     })
   });
 }
