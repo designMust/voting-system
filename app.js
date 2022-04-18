@@ -367,7 +367,7 @@ function writeVotes(){
   for (var i = 0; i < 3; i++) {
     //counters[i].textContent = votesCount[i];
     //counters[i].innerText = votesCount[i];
-    console.log(votesCount[i]);
+    console.log(votesCount.at(i));
     console.log(counters[i]);
   }
 }
