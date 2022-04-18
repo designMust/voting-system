@@ -34,9 +34,9 @@ const listsID = [
 ];
   
 var counters = [
-  "contadorlist1",
-  "contadorlist2",
-  "contadorlist3"
+  contadorlist1,
+  contadorlist2,
+  contadorlist3
 ];
 
 var votesCount = [];
