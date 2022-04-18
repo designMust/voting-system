@@ -40,7 +40,7 @@ var counters = [
 ];
 
 let votesCount = [];
-var iterador = votesCount.values();
+let iterador = votesCount.values();
 
 //Contabilizar votos y guardarlos en la array votesCount[]
 
