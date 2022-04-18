@@ -356,7 +356,7 @@ function contarVotos() {
     countVariable = snapshot.val();
     console.log(countVariable);
     console.log(Object.keys(countVariable).length);
-    span[actual].textContent = Object.keys(countVariable;
+    span[actual].textContent = Object.keys(countVariable);
     actual++;
     })
   );
