@@ -347,10 +347,10 @@ function stopLoadingScreen() {
 function readAndWriteVotes() {
   listsID.forEach((listID, index, array) => {
     onValue(ref(database, 'lists/' + listID.id), (snapshot) => {
-      let listObject = snapshot.val();
-      let count = String(Object.keys(listObject).length);
-      let currentCounter = listID.counter;
-      $("#" + currentCounter).text(count);
+      //let listObject = snapshot.val();
+      //let count = String(Object.keys(listObject).length);
+      //let currentCounter = listID.counter;
+      $("#" + listID.counter).text(String(Object.keys(snapshot.val()).length););
     })
   });
 }
