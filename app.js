@@ -365,12 +365,9 @@ function readVotes() {
 
 function writeVotes(){
   
-  console.log(votesCount);
-  let iterador = votesCount.values();
-  
-  for (let letra of iterador) {
-    console.log(letra);
-  }
+  console.log(String(votesCount));
+  let currentVotes = [...votesCount]
+  console.log(currentVotes)
   
   /*for (var i = 0; i < 3; i++) {
     counters[i].textContent = currentVotes.at(i);
