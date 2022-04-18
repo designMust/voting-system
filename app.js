@@ -360,21 +360,18 @@ function readVotes() {
       let listObject = snapshot.val();
       let count = String(Object.keys(listObject).length);
       votesCount.push(count);
-      console.log(votesCount);
     })
   );               
-  //writeVotes();  
+  writeVotes();  
 }
 
-/*function writeVotes(){
+function writeVotes(){
   
   for (var i = 0; i < 3; i++) {
-    counters[i].textContent = currentVotes.at(i);
-    //counters[i].innerText = votesCount[i];
-    //console.log(votesCount.at(i));
-    //console.log(counters.at(i));
+    console.log(votesCount.at(i));
+    console.log(counters.at(i));
+    //counters[i].textContent = currentVotes.at(i);
+    counters[i].innerText = votesCount.at(i);
   }
   
-}*/
-
-
+}
