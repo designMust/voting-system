@@ -43,7 +43,9 @@ var countVariable;
 var actual = 0;
 var votesCount = [];
 
-window.onload = contarVotos();
+//Contabilizar votos y guardarlos en la array votesCount[]
+
+contarVotos();
 
 
 //User State Observer
