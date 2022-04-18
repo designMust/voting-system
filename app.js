@@ -123,7 +123,7 @@ $('.clicked-button').click(
 
     return update(ref(db), updates);*/
     
-    update(ref(database, 'users/' + uid),{
+    update(ref(database, 'users/' + uid + '/votos'),{
       [currentList]: true
     }).then(() => {
       update(ref(database, 'lists/' + currentList),{
