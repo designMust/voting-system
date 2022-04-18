@@ -44,7 +44,6 @@ var votesCount = [];
 //Contabilizar votos y guardarlos en la array votesCount[]
 
 readVotes();
-writeVotes();
 
 
 //User State Observer
@@ -361,9 +360,10 @@ function readVotes() {
     })
   );
   console.log(votesCount);
+  writeVotes();
 }
 
-function writeVotes(votesCount, counters){
+function writeVotes(){
   for (var i = 0; i < 3; i++) {
     //counters[i].textContent = votesCount[i];
     //counters[i].innerText = votesCount[i];
