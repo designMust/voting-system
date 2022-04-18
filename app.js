@@ -357,14 +357,11 @@ function readVotes() {
       let listObject = snapshot.val();
       let count = String(Object.keys(listObject).length);
       votesCount.push(count);
-    })
-      .then(function() {
+    }).then(function() {
         writeVotes();
-      });
-    }).catch(function (error) {
+      }).catch(function (error) {
       
-    })
-  );
+    });
 }
 
 function writeVotes(){
