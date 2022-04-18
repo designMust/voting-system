@@ -39,11 +39,14 @@ var counters = [
   contadorlist3
 ];
 
-//let votesCount = [];
+var votesCount = [];
 
 //Contabilizar votos y guardarlos en la array votesCount[]
 
-window.onload = readVotes();
+window.onload = function() {
+  readVotes();
+  console.log(votesCount);  
+}
 
 //User State Observer
 
@@ -359,8 +362,7 @@ function readVotes() {
       votesCount.push(count);
       console.log(votesCount);
     })
-  );
-  //console.log(votesCount);                 
+  );               
   //writeVotes();  
 }
 
