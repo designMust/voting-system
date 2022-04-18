@@ -40,6 +40,7 @@ var counters = [
 ];
 
 let votesCount = [];
+var iterador = votesCount.values();
 
 //Contabilizar votos y guardarlos en la array votesCount[]
 
@@ -364,7 +365,10 @@ function readVotes() {
 }
 
 function writeVotes(){
-  console.log("Esto es el array votesCount " + votesCount);
+  
+  for (let letra of iterador) {
+    console.log(letra);
+  }
   
   /*for (var i = 0; i < 3; i++) {
     counters[i].textContent = currentVotes.at(i);
