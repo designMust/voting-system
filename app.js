@@ -281,11 +281,10 @@ function signUpVerification() { //Send a verification Mail after signing up
   const user = auth.currentUser;
   sendEmailVerification(user, actionCodeSettings)
   .then(() => {
-    //signOut(auth)
-    window.location.replace('/verification');
-    /*.then(() => {
+    signOut(auth)
+    .then(() => {
       window.location.replace('/verification');
-    })*/
+    })
   })
 }
 
