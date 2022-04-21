@@ -340,8 +340,10 @@ function errorSignUp(error) { //Error messages in Sign Up method
   
 }
 
-function userSignedIn() {
-
+function userSignedIn(auth) {
+  const user = auth.currentUser;
+  const uid = user.uid;
+  
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
