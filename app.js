@@ -79,7 +79,7 @@ onAuthStateChanged(auth, (user) => {
       if (snapshot.exists()) {
         let listasVotadas = Object.keys(snapshot.val());
         listasVotadas.forEach( function(lista) {
-          let currentVotedList = document.getElementById('lista');
+          let currentVotedList = document.document.getElementById(lista);
           currentVotedList.style.display = "none";
           console.log(lista)                    
         }); 
