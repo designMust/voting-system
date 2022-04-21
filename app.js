@@ -22,7 +22,6 @@ const auth = getAuth();
 // Global const, var, let objects
 
 const user = auth.currentUser;
-const uid = user.uid;
 const vote = document.querySelectorAll('.votewrapper.w-embed');
 //const voted = document.querySelectorAll('.votedbutton.w-button');
 const fake = document.querySelectorAll('.votefake.w-button');
@@ -64,7 +63,6 @@ var votesCount = new Array();*/
 //Contabilizar votos y guardarlos en la array votesCount[]
 
 readAndWriteVotes();
-checkVoteStatus();
 //readVotes();
 //console.log(votesCount);
 //console.log(listsID);
@@ -73,6 +71,7 @@ checkVoteStatus();
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
+    
     
     /*
     const dbRef = ref(database);
@@ -454,7 +453,3 @@ function readAndWriteVotes() {
   }
   
 }*/
-
-function checkVoteStatus() {
-
-}
