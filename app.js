@@ -75,8 +75,15 @@ onAuthStateChanged(auth, (user) => {
     const uid = user.uid;
     
     onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
+      
       if (snapshot.exists()) {
-        console.log(snapshot.val());
+        
+        let listasVotadas = Object.keys(snapshot.val());
+        
+        listasVotadas.forEach(lista => 
+          console.log(lista);                     
+        ); 
+        //console.log(snapshot.val()); 
       } else {
         console.log("No available data");
       }
