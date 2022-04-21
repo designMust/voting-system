@@ -74,7 +74,7 @@ onAuthStateChanged(auth, (user) => {
     
     const uid = user.uid;
     
-    get(child(database, `users/${uid}/votos`)).then((snapshot) => {
+    get(child(database, 'users/' + uid + '/votos')).then((snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
       } else {
