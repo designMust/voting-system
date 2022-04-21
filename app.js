@@ -348,21 +348,20 @@ function userSignedIn() {
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
-      /*let currentVotedList;
+      //let currentVotedList;
       listasVotadas.forEach( function(lista) {
         //currentVotedList.classList.add("voted");
-        currentVotedList = document.getElementById(lista);
-        currentVotedList.style.backgroundColor = "#000000";
-        currentVotedList.style.color = "white";
-        currentVotedList.style.cursor = "default";
-        currentVotedList.textContent = "Votaste";*/
-        console.log("Este usuario votó: " + lista)//;                   
-      }//);
+        //currentVotedList = document.getElementById(lista);
+        //currentVotedList.style.backgroundColor = "#000000";
+        //currentVotedList.style.color = "white";
+        //currentVotedList.style.cursor = "default";
+        //currentVotedList.textContent = "Votaste";
+        console.log("Este usuario votó: " + lista);                   
+      });
     } else {
       console.log("Usuario ha votado todavía.")
     }
   })
-}
   
   for (const votewrapper of vote) { //Show real vote button
     votewrapper.style.display = "block";
