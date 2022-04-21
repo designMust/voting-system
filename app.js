@@ -78,7 +78,13 @@ onAuthStateChanged(auth, (user) => {
       
       if (snapshot.exists()) {
         let listasVotadas = Object.keys(snapshot.val());
-        listasVotadas.forEach(lista => console.log(lista)); 
+        listasVotadas.forEach(lista =>
+          //console.log(lista)
+          var currentVotedList = document.querySelectorAll('.votebutton.w-embed');                    
+            for (const voteButton of currentVotedList) {
+              voteButton.style.display = "none";
+            }
+        ); 
         //console.log(snapshot.val()); 
       } else {
         console.log("No available data");
