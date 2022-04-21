@@ -78,13 +78,13 @@ onAuthStateChanged(auth, (user) => {
       
       if (snapshot.exists()) {
         let listasVotadas = Object.keys(snapshot.val());
-        listasVotadas.forEach(lista =>
-        lista.style.display = "none";
-        console.log(lista)                    
-        ); 
+        listasVotadas.forEach( function(lista) {
+          //lista.style.display = "none";
+          console.log(lista)                    
+        }); 
         //console.log(snapshot.val()); 
       } else {
-        lista.style.display = "block";
+        //lista.style.display = "block";
       }
     })
     
