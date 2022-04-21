@@ -22,7 +22,7 @@ const auth = getAuth();
 // Global const, var, let objects
 
 const user = auth.currentUser;
-//const vote = document.querySelectorAll('.votebutton.w-embed');
+const vote = document.querySelectorAll('.w-embed');
 //const voted = document.querySelectorAll('.votedbutton.w-button');
 const fake = document.querySelectorAll('.votefake.w-button');
 const votingWrapper = document.querySelectorAll('.votingwrapper');
@@ -380,9 +380,9 @@ function userSignedOut() {
   signOutButton.style.display="none"; //Hide SignOut link
   signInButton.style.display="block"; //Show SignIn link
   
-  /*for (const voteButton of vote) { //Show real vote button
+  for (const voteButton of vote) { //Show real vote button
     voteButton.style.display = "none";
-  }*/
+  }
   for (const voteFake of fake) { //Hide fake vote button
     voteFake.style.display = "block";
   }
