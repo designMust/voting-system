@@ -22,6 +22,7 @@ const auth = getAuth();
 // Global const, var, let objects
 
 const user = auth.currentUser;
+const uid = user.uid;
 const vote = document.querySelectorAll('.votewrapper.w-embed');
 //const voted = document.querySelectorAll('.votedbutton.w-button');
 const fake = document.querySelectorAll('.votefake.w-button');
@@ -434,9 +435,6 @@ function readAndWriteVotes() {
 }*/
 
 function checkVoteStatus() {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  const uid = user.uid;
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
