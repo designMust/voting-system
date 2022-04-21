@@ -72,6 +72,8 @@ readAndWriteVotes();
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
     
+    const uid = user.uid;
+    
     /*
     const dbRef = ref(database);
     
@@ -339,8 +341,7 @@ function errorSignUp(error) { //Error messages in Sign Up method
 }
 
 function userSignedIn() {
-  
-  const uid = user.uid;
+
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
