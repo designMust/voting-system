@@ -345,10 +345,6 @@ function userSignedIn() {
   const user = auth.currentUser;
   const uid = user.uid;
   
-  for (const votewrapper of vote) { //Show real vote button
-    votewrapper.style.display = "block";
-  }
-  
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
@@ -365,6 +361,10 @@ function userSignedIn() {
       console.log("Usuario ha votado todavía.")
     }
   })
+  
+  for (const votewrapper of vote) { //Show real vote button
+    votewrapper.style.display = "block";
+  }
   
   signInButton.style.display="none"; //Hide SignIn link
   signOutButton.style.display="block"; //Show SignOut link
