@@ -75,7 +75,7 @@ onAuthStateChanged(auth, (user) => {
     const uid = user.uid;
     const dbRef = ref(database);
     
-    get(child(dbRef, 'users/' + uid + '/votes')).then((snapshot) =>{
+    get(child(dbRef, 'users/' + uid)).then((snapshot) =>{
       if (snapshot.exists()) {
         console.log(snapshot.val());
       } else {
