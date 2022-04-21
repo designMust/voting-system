@@ -76,10 +76,10 @@ onAuthStateChanged(auth, (user) => {
     const dbRef = ref(database);
     
     get(child(dbRef, 'users/' + uid)).then((snapshot) =>{
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
+      if (/*snapshot.exists()*/ 'votos' in snapshot.val();) {
+        console.log(/*snapshot.val()*/ "Este usuario ya ha votado");
       } else {
-        console.log("No data available");
+        console.log("Este usuario no ha votado");
       }
     })
     
