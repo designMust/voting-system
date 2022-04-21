@@ -345,6 +345,10 @@ function userSignedIn() {
   const user = auth.currentUser;
   const uid = user.uid;
   
+  for (const votewrapper of vote) { //Show real vote button
+    votewrapper.style.display = "block";
+  }
+  
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
@@ -365,9 +369,6 @@ function userSignedIn() {
   signInButton.style.display="none"; //Hide SignIn link
   signOutButton.style.display="block"; //Show SignOut link
   
-  /*for (const voteButton of vote) { //Show real vote button
-    voteButton.style.display = "block";
-  }*/
   for (const voteFake of fake) { //Hide fake vote button
     voteFake.style.display = "none";
   }
