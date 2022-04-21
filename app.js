@@ -80,7 +80,7 @@ onAuthStateChanged(auth, (user) => {
         let listasVotadas = Object.keys(snapshot.val());
         listasVotadas.forEach( function(lista) {
           let currentVotedList = document.getElementById(lista);
-          currentVotedList.style.backgroundColor = "000000";
+          currentVotedList.style.backgroundColor = "#000000";
           currentVotedList.style.color = "white";
           currentVotedList.style.cursor = "default";
           currentVotedList.textContent = "Votaste";
