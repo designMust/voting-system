@@ -348,9 +348,10 @@ function userSignedIn() {
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
+      let currentVotedList;
       listasVotadas.forEach( function(lista) {
-        let currentVotedList = document.getElementById(lista);
         //currentVotedList.classList.add("voted");
+        currentVotedList = document.getElementById(lista);
         currentVotedList.style.backgroundColor = "#000000";
         currentVotedList.style.color = "white";
         currentVotedList.style.cursor = "default";
