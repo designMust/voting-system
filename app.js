@@ -71,6 +71,19 @@ readAndWriteVotes();
 
 onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
+    
+    const uid = user.uid;
+    
+    get(child(database, `users/${uid}/votos`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+    
     userSignedIn();
     stopLoadingScreen();
     console.log('User is logged in!');
@@ -315,18 +328,6 @@ function errorSignUp(error) { //Error messages in Sign Up method
 }
 
 function userSignedIn() {
-  
-  const uid = user.uid;
-  
-  get(child(database, `users/${uid}/votos`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
   
   signInButton.style.display="none"; //Hide SignIn link
   signOutButton.style.display="block"; //Show SignOut link
