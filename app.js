@@ -436,7 +436,7 @@ function readAndWriteVotes() {
 function checkVoteStatus() {
   //const auth = getAuth();
   //const user = auth.currentUser;
-  //const uid = user.uid;
+  const uid = user.uid;
   onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
