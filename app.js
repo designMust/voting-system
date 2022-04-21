@@ -345,7 +345,7 @@ function userSignedIn() {
   const user = auth.currentUser;
   const uid = user.uid;
   
-  onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
+  get(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
     if (snapshot.exists()) {
       let listasVotadas = Object.keys(snapshot.val());
       listasVotadas.forEach( function(lista) {
