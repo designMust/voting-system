@@ -73,16 +73,27 @@ onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
     
     const uid = user.uid;
+    const dbRef = ref(database);
     
-    get(child(database, 'users/' + uid + '/votos')).then((snapshot) => {
+    get(child(dbRef, '/users/' + uid + '/votes')).then((snapshot) =>{
       if (snapshot.exists()) {
         console.log(snapshot.val());
       } else {
         console.log("No data available");
       }
-    }).catch((error) => {
-      console.error(error);
-    });
+    })
+    
+    /*get(ref(database, 'lists/' + listID.id), (snapshot) => {
+
+    })
+    
+    get(child(database, 'users/' + uid + '/votos'))
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    })*/
     
     userSignedIn();
     stopLoadingScreen();
