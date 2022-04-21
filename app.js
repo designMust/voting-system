@@ -356,8 +356,8 @@ function userSignedIn() {
         currentVotedList.style.color = "white";
         currentVotedList.style.cursor = "default";
         currentVotedList.textContent = "Votaste";*/
-        console.log("Este usuario votó: " + lista)                   
-      });
+        console.log("Este usuario votó: " + lista);                   
+      }//);
     } else {
       console.log("Usuario ha votado todavía.")
     }
