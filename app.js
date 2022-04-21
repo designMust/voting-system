@@ -80,7 +80,10 @@ onAuthStateChanged(auth, (user) => {
         let listasVotadas = Object.keys(snapshot.val());
         listasVotadas.forEach( function(lista) {
           let currentVotedList = document.getElementById(lista);
-          currentVotedList.style.display = "none";
+          currentVotedList.style.background = "000000";
+          currentVotedList.style.color = "white";
+          currentVotedList.style.cursor = "default";
+          currentVotedList.text = "Votaste";
           console.log(lista)                    
         }); 
         //console.log(snapshot.val()); 
