@@ -316,7 +316,6 @@ function errorSignUp(error) { //Error messages in Sign Up method
 
 function userSignedIn() {
   
-  const user = userCredential.user;
   const uid = user.uid;
   
   get(child(database, `users/${uid}/votos`)).then((snapshot) => {
