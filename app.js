@@ -342,6 +342,27 @@ function errorSignUp(error) { //Error messages in Sign Up method
 
 function userSignedIn() {
   
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const uid = user.uid;
+  
+  onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
+    if (snapshot.exists()) {
+      let listasVotadas = Object.keys(snapshot.val());
+      listasVotadas.forEach( function(lista) {
+        let currentVotedList = document.getElementById(lista);
+        //currentVotedList.classList.add("voted");
+        currentVotedList.style.backgroundColor = "#000000";
+        currentVotedList.style.color = "white";
+        currentVotedList.style.cursor = "default";
+        currentVotedList.textContent = "Votaste";
+        console.log("Este usuario votó: " + lista);                   
+      });
+    } else {
+      console.log("Usuario ha votado todavía.")
+    }
+  })
+  
   for (const votewrapper of vote) { //Show real vote button
     votewrapper.style.display = "block";
   }
@@ -435,20 +456,5 @@ function readAndWriteVotes() {
 }*/
 
 function checkVoteStatus() {
-  onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
-    if (snapshot.exists()) {
-      let listasVotadas = Object.keys(snapshot.val());
-      listasVotadas.forEach( function(lista) {
-        let currentVotedList = document.getElementById(lista);
-        //currentVotedList.classList.add("voted");
-        currentVotedList.style.backgroundColor = "#000000";
-        currentVotedList.style.color = "white";
-        currentVotedList.style.cursor = "default";
-        currentVotedList.textContent = "Votaste";
-        console.log("Este usuario votó: " + lista);                   
-      });
-    } else {
-      console.log("Usuario ha votado todavía.")
-    }
-  })
+
 }
