@@ -73,15 +73,25 @@ onAuthStateChanged(auth, (user) => {
   if (user) { // User is signed in
     
     const uid = user.uid;
+    
+    onValue(ref(database, 'users/' + uid + '/votos'), (snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No available data");
+      }
+    })
+    
+    /*
     const dbRef = ref(database);
     
-    get(child(dbRef, 'users/' + uid)).then((snapshot) =>{
-      if (/*snapshot.exists()*/ 'votos' in snapshot.val()) {
-        console.log(/*snapshot.val()*/ "Este usuario ya ha votado");
+    get(child(dbRef, 'users/' + uid + '/votos')).then((snapshot) =>{
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
       } else {
         console.log("Este usuario no ha votado");
       }
-    })
+    })*/
     
     /*get(ref(database, 'lists/' + listID.id), (snapshot) => {
 
