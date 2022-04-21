@@ -340,7 +340,8 @@ function errorSignUp(error) { //Error messages in Sign Up method
   
 }
 
-function userSignedIn(auth) {
+function userSignedIn() {
+  const auth = getAuth();
   const user = auth.currentUser;
   const uid = user.uid;
   
