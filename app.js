@@ -360,7 +360,7 @@ function userSignedIn() {
           currentVotedList.textContent = "Votaste";
           console.log("Este usuario votó: " + lista);  
         } else {
-          console.log("ID de la lista no se encuentra en la página");
+          console.log("El ID: " + lista + "no existe en esta página.");
         }
       });
     } else {
