@@ -39,6 +39,10 @@ const listsID = [
   {
     id: "list3",
     counter: "contadorlist3"
+  },
+  {
+    id: "list4",
+    counter: "contadorlist4"
   }
 ];
 
