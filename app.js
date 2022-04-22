@@ -44,7 +44,41 @@ const listsID = [
   {
     id: "list4",
     counter: "contadorlist4"
+  },
+  {
+    id: "list5",
+    counter: "contadorlist5"
+  },
+  {
+    id: "list6",
+    counter: "contadorlist6"
   }
+  ,
+  {
+    id: "list7",
+    counter: "contadorlist7"
+  },
+  {
+    id: "list8",
+    counter: "contadorlist8"
+  },
+  {
+    id: "list9",
+    counter: "contadorlist9"
+  },
+  {
+    id: "list10",
+    counter: "contadorlist10"
+  },
+  {
+    id: "list11",
+    counter: "contadorlist11"
+  },
+  {
+    id: "list12",
+    counter: "contadorlist12"
+  }
+  
 ];
 
 /*const listsID = [
