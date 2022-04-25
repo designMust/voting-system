@@ -422,6 +422,7 @@ function userSignedIn() {
 function userSignedOut() {
   signOutButton.style.display="none"; //Hide SignOut link
   signInButton.style.display="block"; //Show SignIn link
+  quieroVotar.style.display="block"; //Hide "Quiero Votar" button
   
   for (const votewrapper of vote) { //Hide real vote button
     votewrapper.style.display = "none";
