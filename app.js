@@ -328,7 +328,7 @@ function signup() { //Sign up
 function signUpVerification() { //Send a verification Mail after signing up
 
   var actionCodeSettings = {
-    url: 'https://discovermust-firebase-bdf453be46d614181.webflow.io/challenge/sing-in',
+    url: 'https://discovermust.com/challenge/sing-in',
     handleCodeInApp: false
   };
   
