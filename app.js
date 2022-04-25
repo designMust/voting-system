@@ -69,16 +69,7 @@ const listsID = [
   {
     id: "list10",
     counter: "contadorlist10"
-  },
-  {
-    id: "list11",
-    counter: "contadorlist11"
-  },
-  {
-    id: "list12",
-    counter: "contadorlist12"
   }
-  
 ];
 
 /*const listsID = [
