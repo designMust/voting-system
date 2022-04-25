@@ -409,7 +409,10 @@ function userSignedIn() {
   
   signInButton.style.display="none"; //Hide SignIn link
   signOutButton.style.display="block"; //Show SignOut link
-  quieroVotar.style.display="none"; //Hide "Quiero Votar" button
+
+  if (document.getElementById('quieroVotar') != null) {
+    quieroVotar.style.display="none"; //Hide "Quiero Votar" button
+  }
   
   for (const voteFake of fake) { //Hide fake vote button
     voteFake.style.display = "none";
@@ -422,7 +425,10 @@ function userSignedIn() {
 function userSignedOut() {
   signOutButton.style.display="none"; //Hide SignOut link
   signInButton.style.display="block"; //Show SignIn link
-  quieroVotar.style.display="block"; //Hide "Quiero Votar" button
+  
+  if (document.getElementById('quieroVotar') != null) {
+    quieroVotar.style.display="block"; //Hide "Quiero Votar" button
+  }
   
   for (const votewrapper of vote) { //Hide real vote button
     votewrapper.style.display = "none";
