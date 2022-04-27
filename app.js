@@ -353,7 +353,7 @@ function errorSignUp(error) { //Error messages in Sign Up method
   
   switch (errorCode) {
     case "auth/email-already-in-use":
-      errorTextSingUp.innerText = "Este correo electrónico ya está en uso.";
+      errorTextSingUp.innerText = "¡Vaya! Parece que ya te has registrado, prueba iniciar sesión haciendo click en el enlace de abajo.";
       errorStatusSingUp.style.display="block";
       formReset();
       break;
