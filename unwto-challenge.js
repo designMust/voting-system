@@ -198,6 +198,7 @@ function signup() { //Sign up
   var today = new Date();
   var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
   var currentChallenge = "UNWTO Challenge";
+  var uniqueUsername = username + uid;
 
   if (terms.checked === true) {
     createUserWithEmailAndPassword(auth, email, password)
@@ -206,7 +207,7 @@ function signup() { //Sign up
       const user = userCredential.user;
       const uid = user.uid;
 
-      set(ref(database, 'users/' + email),{
+      set(ref(database, 'users/' + uniqueUsername),{
           username: username,
           userID: uid,
           userEmail: email,
