@@ -77,9 +77,11 @@ $('.clicked-button').click(
     const user = auth.currentUser;
     var uid = user.uid;
     var email = user.email;
+    var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
+    var uniqueUsername = username + uid;
     var currentList = this.id;
     
-    update(ref(database, 'users/' + email + '/votos'),{
+    update(ref(database, 'users/' + uniqueUsername + '/votos'),{
       [currentList]: true,
     }).then(() => {
       update(ref(database, 'lists/' + currentList),{
