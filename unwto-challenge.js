@@ -29,8 +29,8 @@ const votingWrapper = document.querySelectorAll('.votingwrapper');
 
 const listsID = [
   {
-    id: "list1",
-    counter: "contadorlist1"
+    id: "nombreDelaLista",
+    counter: "contadornombreDelaLista"
   }
 ];
 
