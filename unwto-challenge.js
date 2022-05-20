@@ -76,16 +76,16 @@ $('.clicked-button').click(
   function(){
     const user = auth.currentUser;
     var uid = user.uid;
-    var email = user.email;
-    var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
-    var uniqueUsername = username + uid;
+    //var email = user.email;
+    //var username = email.substring(0,email.indexOf('@')).replace(/[^a-zA-Z ]/g, "");
+    //var uniqueUsername = username + uid;
     var currentList = this.id;
     
-    update(ref(database, 'users/' + uniqueUsername + '/votos'),{
+    update(ref(database, 'users/' + uid + '/votos'),{
       [currentList]: true,
     }).then(() => {
       update(ref(database, 'lists/' + currentList),{
-      [email]: true
+      [uid]: true
       });
       console.log("Voto procesado");
     })
@@ -200,7 +200,7 @@ function signup() { //Sign up
   var today = new Date();
   var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
   var currentChallenge = "UNWTO Challenge";
-  var uniqueUsername = username + uid;
+  //var uniqueUsername = username + uid;
 
   if (terms.checked === true) {
     createUserWithEmailAndPassword(auth, email, password)
@@ -209,7 +209,7 @@ function signup() { //Sign up
       const user = userCredential.user;
       const uid = user.uid;
 
-      set(ref(database, 'users/' + uniqueUsername),{
+      set(ref(database, 'users/' + uid),{
           username: username,
           userID: uid,
           userEmail: email,
