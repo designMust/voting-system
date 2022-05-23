@@ -29,8 +29,44 @@ const votingWrapper = document.querySelectorAll('.votingwrapper');
 
 const listsID = [
   {
-    id: "nombreDelaLista",
-    counter: "contadornombreDelaLista"
+    id: "aregkam",
+    counter: "contadoraregkam"
+  },
+  {
+    id: "bezimagdalena",
+    counter: "contadorbezimagdalena"
+  },
+  {
+    id: "khadijam",
+    counter: "contadorkhadijam"
+  },
+  {
+    id: "dhaanishhh",
+    counter: "contadordhaanishhh"
+  },
+  {
+    id: "franvas54",
+    counter: "contadorfranvas54"
+  },
+  {
+    id: "jurica",
+    counter: "contadorjurica"
+  },
+  {
+    id: "aimemhlmn",
+    counter: "contadoraimemhlmn"
+  },
+  {
+    id: "janakosticc4",
+    counter: "contadorjanakosticc4"
+  },
+  {
+    id: "ghahremanitara",
+    counter: "contadorghahremanitara"
+  },
+  {
+    id: "elenavie",
+    counter: "contadorelenavie"
   }
 ];
 
