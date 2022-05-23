@@ -319,7 +319,7 @@ function userSignedIn() {
           currentVotedList.style.backgroundColor = "#000000";
           currentVotedList.style.color = "white";
           currentVotedList.style.cursor = "default";
-          currentVotedList.textContent = "Votaste";
+          currentVotedList.textContent = "Voted";
           console.log("Este usuario votó: " + lista);  
         } else {
           console.log("El ID: " + lista + "no existe en esta página.");
